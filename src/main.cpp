@@ -7,7 +7,7 @@
 const char *WIFI_SSID = "Rokas_wifi";
 const char *WIFI_PASS = "internetas2001";
 
-const char *API_ENDPOINT = "http://172.20.10.4:7002/process-label";
+const char *API_ENDPOINT = "http://152.53.124.121:7134/process-label/entry";
 
 static auto hiRes = esp32eye::Resolution::find(800, 600);
 
