@@ -7,7 +7,7 @@
 const char *WIFI_SSID = "Rokas_wifi";
 const char *WIFI_PASS = "internetas2001";
 
-const char *API_ENDPOINT = "http://152.53.124.121:7134/process-label/entry";
+const char *API_ENDPOINT = "https://138.199.217.16/ocr/process-label/entry";
 
 static auto hiRes = esp32eye::Resolution::find(800, 600);
 
@@ -39,13 +39,14 @@ void captureAndSendImage()
 
   HTTPClient http;
   http.begin(API_ENDPOINT);
+  http.addHeader("x-api-key", "1241414");
   http.addHeader("Content-Type", "image/jpeg");
 
   int httpResponseCode = http.POST(frame->data(), frame->size());
-
   if (httpResponseCode > 0)
   {
     Serial.printf("Image sent! HTTP response code: %d\n", httpResponseCode);
+    Serial.printf("Response: %s\n", http.getString().c_str());
   }
   else
   {
